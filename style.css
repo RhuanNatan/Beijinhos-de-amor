@@ -5,17 +5,21 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #ffebee;
+    background-color: #4a90e2;
 }
 
 .container {
     text-align: center;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
     margin-bottom: 50px;
-    color: #d81b60;
+    color: white;
 }
 
 .buttons {
@@ -29,25 +33,19 @@ button {
     cursor: pointer;
     border: none;
     border-radius: 5px;
+    display: inline-block;
 }
 
-#simBtn {
+#simBtn, #naoBtn, #tentarNovamente, #falhaBtn {
     background-color: #ff4081;
     color: white;
-}
-
-#naoBtn {
-    background-color: #9e9e9e;
-    color: white;
-}
-
-#tentarNovamente, #falhaBtn {
-    background-color: #ff4081;
-    color: white;
+    margin: 10px auto;
 }
 
 #mensagem {
     margin-top: 20px;
     font-size: 18px;
-    color: #d81b60;
+    color: white;
+    text-align: center;
+    width: 100%;
 }
