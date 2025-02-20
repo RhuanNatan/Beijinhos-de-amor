@@ -18,6 +18,15 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
         
+        // Ajusta a área segura baseado no dispositivo
+        if (window.innerWidth <= 768) { // Mobile
+            safeArea.width = 280;
+            safeArea.height = 500; // Aumentado para mais movimento vertical
+        } else { // Desktop
+            safeArea.width = 600; // Aumentado para mais movimento horizontal
+            safeArea.height = 350;
+        }
+        
         // Calcula os limites a partir do centro
         const limits = {
             minX: centerX - (safeArea.width / 2),
