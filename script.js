@@ -32,8 +32,12 @@ document.getElementById('tentarNovamente').addEventListener('click', function() 
 });
 
 document.getElementById('falhaBtn').addEventListener('click', function() {
-    document.getElementById('mensagem').textContent = 'Brincadeiraaa vc acabou de ganhar um vale beijinhoo de 5 anos, para me beijar quando quiser';
-    this.style.display = 'none';
+    document.getElementById('mensagem').textContent = 'Hmm... Você realmente quer me beijar?';
+    this.textContent = 'Sim, eu quero muito!';
+    this.addEventListener('click', function() {
+        document.getElementById('mensagem').textContent = 'Brincadeiraaa vc acabou de ganhar um vale beijinhoo de 5 anos, para me beijar quando quiser';
+        this.style.display = 'none';
+    }, { once: true });
 });
 
 function resetarJogo() {
