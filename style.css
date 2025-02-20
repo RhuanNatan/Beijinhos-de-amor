@@ -9,19 +9,6 @@ body {
 }
 
 .container {
-  text-align: center;
-  padding: 20px;
-}
-
-h1 {
-  margin-bottom: 50px;  /* Aumentando a distância entre o título e os botões */
-}
-
-button {
-  padding: 10px 20px;
-  margin: 10px;
-
-.container {
     text-align: center;
     padding: 20px;
 }
