@@ -5,22 +5,29 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
     tentativas++;
     
     if (tentativas < 5) {
-        // Obtém as dimensões do botão
+        // Obtém as dimensões do botão e da área visível
         const buttonWidth = this.offsetWidth;
         const buttonHeight = this.offsetHeight;
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
         
-        // Calcula os limites máximos considerando o tamanho do botão
-        const maxX = window.innerWidth - buttonWidth;
-        const maxY = window.innerHeight - buttonHeight;
+        // Define uma área segura (80% do centro da tela)
+        const safeAreaWidth = viewportWidth * 0.8;
+        const safeAreaHeight = viewportHeight * 0.8;
         
-        // Gera posições aleatórias dentro dos limites seguros
-        const novoX = Math.random() * (maxX - 20); // -20 para margem extra
-        const novoY = Math.random() * (maxY - 20);
+        // Calcula os limites para manter o botão na área segura
+        const minX = (viewportWidth - safeAreaWidth) / 2;
+        const maxX = viewportWidth - buttonWidth - minX;
+        const minY = (viewportHeight - safeAreaHeight) / 2;
+        const maxY = viewportHeight - buttonHeight - minY;
+        
+        // Gera posições aleatórias dentro da área segura
+        const novoX = Math.random() * (maxX - minX) + minX;
+        const novoY = Math.random() * (maxY - minY) + minY;
         
         this.style.position = 'fixed';
         this.style.left = novoX + 'px';
         this.style.top = novoY + 'px';
-        
         this.classList.add('moving');
     } else {
         this.classList.remove('moving');
