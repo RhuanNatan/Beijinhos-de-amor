@@ -22,7 +22,14 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
     } else {
         document.getElementById('simBtn').style.display = 'none';
         document.getElementById('naoBtn').style.display = 'none';
+        document.querySelector('h1').style.display = 'none';
         document.getElementById('mensagem').textContent = 'Você ganhou um vale beijinho de 5 anos, para me beijar quando quiser ❤️';
+        document.getElementById('mensagem').style.position = 'absolute';
+        document.getElementById('mensagem').style.top = '50%';
+        document.getElementById('mensagem').style.left = '50%';
+        document.getElementById('mensagem').style.transform = 'translate(-50%, -50%)';
+        document.getElementById('mensagem').style.width = '80%';
+        document.getElementById('mensagem').style.fontSize = '24px';
     }
 });
 
