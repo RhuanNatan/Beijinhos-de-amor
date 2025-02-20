@@ -5,30 +5,54 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
     tentativas++;
     
     if (tentativas < 5) {
-        const buttonWidth = 120; // Largura fixa do botão
-        const buttonHeight = 40; // Altura aproximada do botão
+        const buttonWidth = 120;
+        const buttonHeight = 40;
+        const isMobile = window.innerWidth <= 768;
         
-        // Define uma área segura fixa para movimento
-        const safeArea = {
-            width: 280,  // Área segura fixa
-            height: 350  // Área segura fixa
+        // Define as áreas de movimento diferentes para PC e Mobile
+        const moveArea = {
+            // PC: retângulo horizontal mais largo
+            desktop: {
+                top: window.innerHeight * 0.2,
+                bottom: window.innerHeight * 0.8,
+                left: window.innerWidth * 0.1,
+                right: window.innerWidth * 0.9
+            },
+            // Mobile: retângulo vertical mais alto
+            mobile: {
+                top: window.innerHeight * 0.1,
+                bottom: window.innerHeight * 0.9,
+                left: window.innerWidth * 0.2,
+                right: window.innerWidth * 0.8
+            }
         };
         
-        // Calcula o centro da tela
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
+        const area = isMobile ? moveArea.mobile : moveArea.desktop;
         
-        // Calcula os limites a partir do centro
-        const limits = {
-            minX: centerX - (safeArea.width / 2),
-            maxX: centerX + (safeArea.width / 2) - buttonWidth,
-            minY: centerY - (safeArea.height / 2),
-            maxY: centerY + (safeArea.height / 2) - buttonHeight
-        };
+        // Decide aleatoriamente qual borda usar (superior, inferior, esquerda ou direita)
+        const borders = ['top', 'bottom', 'left', 'right'];
+        const selectedBorder = borders[Math.floor(Math.random() * borders.length)];
         
-        // Gera posições aleatórias dentro dos limites
-        const novoX = Math.random() * (limits.maxX - limits.minX) + limits.minX;
-        const novoY = Math.random() * (limits.maxY - limits.minY) + limits.minY;
+        let novoX, novoY;
+        
+        switch(selectedBorder) {
+            case 'top':
+                novoX = Math.random() * (area.right - area.left) + area.left;
+                novoY = area.top;
+                break;
+            case 'bottom':
+                novoX = Math.random() * (area.right - area.left) + area.left;
+                novoY = area.bottom - buttonHeight;
+                break;
+            case 'left':
+                novoX = area.left;
+                novoY = Math.random() * (area.bottom - area.top) + area.top;
+                break;
+            case 'right':
+                novoX = area.right - buttonWidth;
+                novoY = Math.random() * (area.bottom - area.top) + area.top;
+                break;
+        }
         
         // Aplica a nova posição
         this.style.position = 'fixed';
