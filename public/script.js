@@ -5,32 +5,37 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
     tentativas++;
     
     if (tentativas < 5) {
-        // Obtém as dimensões do botão e da área visível
+        const isMobile = window.innerWidth <= 768;
         const buttonWidth = this.offsetWidth;
         const buttonHeight = this.offsetHeight;
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
         
-        // Define uma área segura (80% do centro da tela)
-        const safeAreaWidth = viewportWidth * 0.8;
-        const safeAreaHeight = viewportHeight * 0.8;
+        // Define a área segura de movimento
+        const safeArea = {
+            width: isMobile ? window.innerWidth * 0.7 : window.innerWidth * 0.8,
+            height: isMobile ? window.innerHeight * 0.5 : window.innerHeight * 0.6
+        };
         
-        // Calcula os limites para manter o botão na área segura
-        const minX = (viewportWidth - safeAreaWidth) / 2;
-        const maxX = viewportWidth - buttonWidth - minX;
-        const minY = (viewportHeight - safeAreaHeight) / 2;
-        const maxY = viewportHeight - buttonHeight - minY;
+        // Calcula os limites
+        const limits = {
+            minX: (window.innerWidth - safeArea.width) / 2,
+            maxX: ((window.innerWidth - safeArea.width) / 2) + safeArea.width - buttonWidth,
+            minY: (window.innerHeight - safeArea.height) / 2,
+            maxY: ((window.innerHeight - safeArea.height) / 2) + safeArea.height - buttonHeight
+        };
         
-        // Gera posições aleatórias dentro da área segura
-        const novoX = Math.random() * (maxX - minX) + minX;
-        const novoY = Math.random() * (maxY - minY) + minY;
+        // Gera posições aleatórias dentro dos limites
+        const novoX = Math.random() * (limits.maxX - limits.minX) + limits.minX;
+        const novoY = Math.random() * (limits.maxY - limits.minY) + limits.minY;
         
+        // Aplica a nova posição
         this.style.position = 'fixed';
-        this.style.left = novoX + 'px';
-        this.style.top = novoY + 'px';
-        this.classList.add('moving');
+        this.style.left = `${novoX}px`;
+        this.style.top = `${novoY}px`;
+        this.style.transition = 'none';
+        
     } else {
-        this.classList.remove('moving');
+        this.style.transition = 'all 0.2s ease';
+        this.style.position = 'static';
         document.getElementById('simBtn').style.display = 'none';
         document.getElementById('naoBtn').style.display = 'none';
         document.getElementById('falhaBtn').style.display = 'block';

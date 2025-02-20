@@ -17,31 +17,30 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4px);
-    max-width: 800px;
-    width: 90%;
+    max-width: 400px;
+    width: 80%;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 400px; /* Altura mínima para centralização */
+    min-height: 300px;
 }
 
 h1 {
-    margin-bottom: 50px;  /* Reduzido de 100px para 50px */
+    margin-bottom: 40px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
 button {
-    padding: 12px 25px;
-    margin: 10px;
-    font-size: 16px;
+    padding: 10px 20px;
+    margin: 8px;
+    font-size: 14px;
     cursor: pointer;
     border: none;
     border-radius: 25px;
     transition: transform 0.2s, box-shadow 0.2s;
-    display: inline-block;
-    min-width: 120px; /* Largura mínima para os botões */
+    min-width: 100px;
 }
 
 #simBtn, #naoBtn, #tentarNovamente, #falhaBtn {
@@ -56,10 +55,6 @@ button {
     position: relative;
     transition: all 0.2s ease;
     z-index: 1000;
-}
-
-#simBtn.moving {
-    transition: none; /* Remove a transição quando se move para ser mais responsivo */
 }
 
 #naoBtn {
@@ -95,20 +90,19 @@ button:hover {
     .container {
         padding: 20px;
         width: 85%;
-        margin: 10px;
-        min-height: 300px; /* Reduzido para caber melhor em telas menores */
+        min-height: 250px;
     }
 
     h1 {
-        font-size: 1.8em;
-        margin-bottom: 30px; /* Reduzido ainda mais para mobile */
+        font-size: 1.5em;
+        margin-bottom: 30px;
     }
 
     button {
-        min-width: 100px;
-        padding: 10px 15px; /* Reduzido o padding */
-        margin: 5px; /* Reduzido a margem */
-        font-size: 14px;
+        padding: 8px 15px;
+        margin: 5px;
+        font-size: 13px;
+        min-width: 80px;
     }
 
     #simBtn.moving {
@@ -133,23 +127,25 @@ button:hover {
 
     #mensagem {
         font-size: 16px;
-        margin-top: 10px; /* Reduzido a margem */
+        margin-top: 10px;
     }
 }
 
 /* Para telas muito pequenas */
-@media (max-height: 600px) {
+@media (max-height: 500px) {
     .container {
-        min-height: 250px; /* Ainda menor para telas com pouca altura */
+        min-height: 200px;
+        padding: 15px;
     }
 
     h1 {
         margin-bottom: 20px;
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
 
     button {
-        padding: 8px 12px;
+        padding: 6px 12px;
         margin: 4px;
+        font-size: 12px;
     }
 } 
