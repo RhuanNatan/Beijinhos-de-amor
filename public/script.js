@@ -14,12 +14,16 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
             height: 350  // Área segura fixa
         };
         
-        // Calcula os limites
+        // Calcula o centro da tela
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        
+        // Calcula os limites a partir do centro
         const limits = {
-            minX: (window.innerWidth - safeArea.width) / 2,
-            maxX: ((window.innerWidth - safeArea.width) / 2) + safeArea.width - buttonWidth,
-            minY: (window.innerHeight - safeArea.height) / 2,
-            maxY: ((window.innerHeight - safeArea.height) / 2) + safeArea.height - buttonHeight
+            minX: centerX - (safeArea.width / 2),
+            maxX: centerX + (safeArea.width / 2) - buttonWidth,
+            minY: centerY - (safeArea.height / 2),
+            maxY: centerY + (safeArea.height / 2) - buttonHeight
         };
         
         // Gera posições aleatórias dentro dos limites
