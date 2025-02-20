@@ -54,16 +54,12 @@ button {
     background-color: #00bcd4;
     color: white;
     position: relative;
-    max-width: calc(100% - 20px); /* Previne que o botão saia da tela */
+    transition: all 0.2s ease;
+    z-index: 1000;
 }
 
 #simBtn.moving {
-    position: fixed;
-    /* Limita a área de movimento */
-    max-left: calc(50% - 400px);
-    max-right: calc(50% + 400px);
-    max-top: 10vh;
-    max-bottom: 90vh;
+    transition: none; /* Remove a transição quando se move para ser mais responsivo */
 }
 
 #naoBtn {

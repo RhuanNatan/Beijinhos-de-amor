@@ -5,36 +5,21 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
     tentativas++;
     
     if (tentativas < 5) {
-        const isMobile = window.innerWidth <= 768;
+        // Obtém as dimensões do botão
+        const buttonWidth = this.offsetWidth;
+        const buttonHeight = this.offsetHeight;
         
-        if (isMobile) {
-            // Movimento mais controlado para celular
-            const range = 100; // área de movimento reduzida
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            
-            const novoX = centerX + (Math.random() * range - range/2);
-            const novoY = centerY + (Math.random() * range - range/2);
-            
-            // Garante que o botão não saia da tela
-            const finalX = Math.min(Math.max(novoX, 50), window.innerWidth - 50);
-            const finalY = Math.min(Math.max(novoY, 50), window.innerHeight - 50);
-            
-            this.style.position = 'fixed';
-            this.style.left = finalX + 'px';
-            this.style.top = finalY + 'px';
-        } else {
-            // Comportamento original para desktop
-            const maxX = window.innerWidth - this.offsetWidth - 100;
-            const maxY = window.innerHeight - this.offsetHeight - 100;
-            
-            const novoX = Math.random() * maxX + 50;
-            const novoY = Math.random() * maxY + 50;
-            
-            this.style.position = 'fixed';
-            this.style.left = novoX + 'px';
-            this.style.top = novoY + 'px';
-        }
+        // Calcula os limites máximos considerando o tamanho do botão
+        const maxX = window.innerWidth - buttonWidth;
+        const maxY = window.innerHeight - buttonHeight;
+        
+        // Gera posições aleatórias dentro dos limites seguros
+        const novoX = Math.random() * (maxX - 20); // -20 para margem extra
+        const novoY = Math.random() * (maxY - 20);
+        
+        this.style.position = 'fixed';
+        this.style.left = novoX + 'px';
+        this.style.top = novoY + 'px';
         
         this.classList.add('moving');
     } else {
