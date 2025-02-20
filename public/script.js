@@ -5,14 +5,13 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
     tentativas++;
     
     if (tentativas < 5) {
-        const isMobile = window.innerWidth <= 768;
-        const buttonWidth = this.offsetWidth;
-        const buttonHeight = this.offsetHeight;
+        const buttonWidth = 120; // Largura fixa do botão
+        const buttonHeight = 40; // Altura aproximada do botão
         
-        // Define a área segura de movimento
+        // Define uma área segura fixa para movimento
         const safeArea = {
-            width: isMobile ? window.innerWidth * 0.7 : window.innerWidth * 0.8,
-            height: isMobile ? window.innerHeight * 0.5 : window.innerHeight * 0.6
+            width: 280,  // Área segura fixa
+            height: 350  // Área segura fixa
         };
         
         // Calcula os limites
