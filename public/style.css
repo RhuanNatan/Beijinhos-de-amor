@@ -36,6 +36,13 @@ button {
     border: none;
     border-radius: 25px;
     transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+    min-width: 120px; /* Largura mínima para os botões */
+}
+
+#simBtn, #naoBtn, #tentarNovamente, #falhaBtn {
+    margin: 10px auto;
+    display: inline-block;
 }
 
 /* Área de jogo limitada para o botão Sim */
@@ -83,6 +90,7 @@ button:hover {
         padding: 20px;
         width: 85%;
         margin: 20px;
+        min-height: 300px; /* Altura mínima para garantir espaço suficiente */
     }
 
     h1 {
@@ -91,9 +99,23 @@ button:hover {
     }
 
     button {
-        padding: 10px 20px;
-        font-size: 14px;
+        min-width: 100px;
+        padding: 12px 20px;
         margin: 8px;
+        font-size: 14px;
+    }
+
+    #simBtn.moving {
+        /* Garante que o botão não saia da área visível em dispositivos móveis */
+        max-width: 80%;
+        max-height: 80%;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
     #mensagem {

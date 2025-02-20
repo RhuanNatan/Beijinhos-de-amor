@@ -9,12 +9,12 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
         const containerRect = container.getBoundingClientRect();
         
         // Calcula os limites baseados no container
-        const maxX = containerRect.width - this.offsetWidth - 40; // -40 para margem de segurança
-        const maxY = containerRect.height - this.offsetHeight - 40;
+        const maxX = window.innerWidth - this.offsetWidth - 40; // -40 para margem de segurança
+        const maxY = window.innerHeight - this.offsetHeight - 40;
         
         // Gera posições aleatórias dentro dos limites
-        const novoX = Math.random() * maxX + containerRect.left + 20;
-        const novoY = Math.random() * maxY + containerRect.top + 20;
+        const novoX = Math.random() * (maxX - 40) + 20; // Garante margem dos lados
+        const novoY = Math.random() * (maxY - 40) + 20; // Garante margem em cima e embaixo
         
         this.classList.add('moving');
         this.style.position = 'fixed';
