@@ -5,16 +5,23 @@ document.getElementById('simBtn').addEventListener('click', function(e) {
     tentativas++;
     
     if (tentativas < 5) {
-        const maxX = window.innerWidth - this.offsetWidth;
-        const maxY = window.innerHeight - this.offsetHeight;
+        const container = document.querySelector('.container');
+        const containerRect = container.getBoundingClientRect();
         
-        const novoX = Math.random() * maxX;
-        const novoY = Math.random() * maxY;
+        // Calcula os limites baseados no container
+        const maxX = containerRect.width - this.offsetWidth - 40; // -40 para margem de segurança
+        const maxY = containerRect.height - this.offsetHeight - 40;
         
+        // Gera posições aleatórias dentro dos limites
+        const novoX = Math.random() * maxX + containerRect.left + 20;
+        const novoY = Math.random() * maxY + containerRect.top + 20;
+        
+        this.classList.add('moving');
         this.style.position = 'fixed';
         this.style.left = novoX + 'px';
         this.style.top = novoY + 'px';
     } else {
+        this.classList.remove('moving');
         document.getElementById('simBtn').style.display = 'none';
         document.getElementById('naoBtn').style.display = 'none';
         document.getElementById('falhaBtn').style.display = 'block';
