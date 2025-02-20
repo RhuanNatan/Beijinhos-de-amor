@@ -51,4 +51,4 @@ function resetarJogo() {
     document.getElementById('tentarNovamente').style.display = 'none';
     document.getElementById('falhaBtn').style.display = 'none';
     document.getElementById('mensagem').textContent = '';
-} 
+}
