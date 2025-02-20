@@ -1,5 +1,4 @@
 let tentativas = 0;
-let tentativasTotal = 0;
 
 document.getElementById('simBtn').addEventListener('click', function(e) {
     tentativas++;
@@ -33,14 +32,8 @@ document.getElementById('tentarNovamente').addEventListener('click', function() 
 });
 
 document.getElementById('falhaBtn').addEventListener('click', function() {
-    tentativasTotal++;
-    if (tentativasTotal < 2) {
-        document.getElementById('mensagem').textContent = 'Vamos tentar mais uma vez!';
-        resetarJogo();
-    } else {
-        document.getElementById('mensagem').textContent = 'Brincadeiraaa vc acabou de ganhar um vale beijinhoo de 5 anos, para me beijar quando quiser';
-        this.style.display = 'none';
-    }
+    document.getElementById('mensagem').textContent = 'Brincadeiraaa vc acabou de ganhar um vale beijinhoo de 5 anos, para me beijar quando quiser';
+    this.style.display = 'none';
 });
 
 function resetarJogo() {
@@ -51,4 +44,4 @@ function resetarJogo() {
     document.getElementById('tentarNovamente').style.display = 'none';
     document.getElementById('falhaBtn').style.display = 'none';
     document.getElementById('mensagem').textContent = '';
-}
+} 
